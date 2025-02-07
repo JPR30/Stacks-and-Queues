@@ -1,86 +1,83 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class StackQueueProgram {
+public class StacksAndQueues {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Choose data structure (stack/queue): ");
-        String choice = scanner.nextLine().trim().toLowerCase();
-
+        
+        System.out.print("Choose data structure: (1)Stacks (2)Queus: ");
+        String choice = scanner.next().toLowerCase();
+        
         System.out.print("Enter array size (n): ");
         int n = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-
-        if (choice.equals("stack")) {
+        
+        if (choice.equals("1")) {
             Stack<Integer> stack = new Stack<>();
             while (true) {
-                System.out.print("Choose operation (push/pop): ");
-                String operation = scanner.nextLine().trim().toLowerCase();
-
+                System.out.print("Choose an option (Push or Pop?): ");
+                String operation = scanner.next().toLowerCase();
+                
                 if (operation.equals("push")) {
                     if (stack.size() < n) {
                         System.out.print("Enter integer value: ");
                         int value = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
                         stack.push(value);
-                        System.out.println("Pushed: " + value);
                     } else {
                         System.out.println("Stack is full!");
                     }
                 } else if (operation.equals("pop")) {
                     if (!stack.isEmpty()) {
-                        System.out.println("Popped: " + stack.pop());
+                        System.out.println("Popped element: " + stack.pop());
                     } else {
                         System.out.println("Stack is empty!");
                     }
                 } else {
-                    System.out.println("Invalid operation!");
+                    System.out.println("Invalid operation.");
                 }
-
-                System.out.print("Continue or end? (c/e): ");
-                String cont = scanner.nextLine().trim().toLowerCase();
-                if (cont.equals("e")) {
+                
+                System.out.print("Continue or End? (continue/end): ");
+                if (scanner.next().equalsIgnoreCase("end")) {
                     System.out.println("Final Stack: " + stack);
                     break;
                 }
             }
-        } else if (choice.equals("queue")) {
+        } else if (choice.equals("2")) {
             Queue<Integer> queue = new LinkedList<>();
             while (true) {
-                System.out.print("Choose operation (enqueue/dequeue): ");
-                String operation = scanner.nextLine().trim().toLowerCase();
-
+                System.out.print("Enqueue or Dequeue? (enqueue/dequeue): ");
+                String operation = scanner.next().toLowerCase();
+                
                 if (operation.equals("enqueue")) {
                     if (queue.size() < n) {
                         System.out.print("Enter integer value: ");
                         int value = scanner.nextInt();
-                        scanner.nextLine(); // Consume newline
                         queue.offer(value);
-                        System.out.println("Enqueued: " + value);
                     } else {
                         System.out.println("Queue is full!");
                     }
                 } else if (operation.equals("dequeue")) {
                     if (!queue.isEmpty()) {
-                        System.out.println("Dequeued: " + queue.poll());
+                        System.out.println("Dequeued element: " + queue.poll());
                     } else {
                         System.out.println("Queue is empty!");
                     }
                 } else {
-                    System.out.println("Invalid operation!");
+                    System.out.println("Invalid operation.");
                 }
-
-                System.out.print("Continue or end? (c/e): ");
-                String cont = scanner.nextLine().trim().toLowerCase();
-                if (cont.equals("e")) {
+                
+                System.out.print("Continue or End? (continue/end): ");
+                if (scanner.next().equalsIgnoreCase("end")) {
                     System.out.println("Final Queue: " + queue);
                     break;
                 }
             }
         } else {
-            System.out.println("Invalid choice! Please restart the program.");
+            System.out.println("Invalid choice.");
         }
-
+        
         scanner.close();
     }
 }
+
